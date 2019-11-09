@@ -35,4 +35,20 @@ def insert(root, key, value=None):
     return root
 
 def search(root, key):
-    return None
+    if key is None:
+        raise ValueError('Must supply key to search')
+    if not isinstance(key,int):
+        raise TypeError('Key must be int')
+    if root.key == key:
+        return root.value
+    elif key < root.key:
+        if root.left is None:
+            return None
+        else:
+            return search(root.left,key)
+    elif key > root.key:
+        if root.right is None:
+            return None
+        else:    
+            return search(root.right,key)
+
