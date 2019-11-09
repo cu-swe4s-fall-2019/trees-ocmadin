@@ -68,11 +68,10 @@ def main():
     sorted_data,unsorted_data=import_data('sorted_data.txt','unsorted_data.txt')
 
     arg = parse_args()
-    elapsed_sorted_insert,elapsed_sorted_search = time_insert_sorted(arg.data_structure,sorted_data)
+    elapsed_sorted_insert = time_insert_sorted(arg.data_structure,sorted_data)
     elapsed_unsorted_insert = time_insert_sorted(arg.data_structure,unsorted_data)
     print('Sorted Insert: ', elapsed_sorted_insert)
     print('Unsorted Insert: ', elapsed_unsorted_insert)
-    print('Sorted Search: ', elapsed_sorted_search)    
 if __name__ == '__main__':
     main()
     
