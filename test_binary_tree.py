@@ -57,3 +57,34 @@ class TestInsert(unittest.TestCase):
         self.assertEqual(root.right.value,'val2')
         self.assertEqual(root.right.right.value,'val3')
         self.assertEqual(root.left,None)
+class TestSearch(unittest.TestCase):
+    def test_search_inputs(self):
+        self.assertRaises(ValueError,bt.search,None,None)
+        root = None
+        self.assertRaises(TypeError,bt.search,root,'key')
+    def test_search_root(self):
+        root = None
+        root = bt.insert(root,1000,'val')
+        self.assertEqual(bt.search(root,1000),'val')
+    def test_search_left(self):
+        root = None
+        root = bt.insert(root,15,'val')
+        root = bt.insert(root,14,'val2')
+        root = bt.insert(root,13,'val3')
+        self.assertEqual(bt.search(root,14),'val2')
+        self.assertEqual(bt.search(root,13),'val3')
+    def test_search_right(self):
+        root = None
+        root = bt.insert(root,15,'val')
+        root = bt.insert(root,16,'val2')
+        root = bt.insert(root,17,'val3')
+        self.assertEqual(bt.search(root,16),'val2')
+        self.assertEqual(bt.search(root,17),'val3')
+    def test_search_mixed(self):
+        root = None
+        root = bt.insert(root,15,'val')
+        root = bt.insert(root,18,'val2')
+        root = bt.insert(root,17,'val3')
+        self.assertEqual(bt.search(root,18),'val2')
+        self.assertEqual(bt.search(root,17),'val3')
+        
